@@ -19,7 +19,7 @@ export default function Home() {
     }
   }
 
-  const uploadHandler = (event) => {
+  const uploadHandler = (e: React.ChangeEvent<any>): void) => {
     parse(event.target.files[0], {
       header: true,
       skipEmptyLines: true,

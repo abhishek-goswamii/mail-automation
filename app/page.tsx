@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import papa from 'papaparse'
+import { parse } from 'papaparse'
 
 export default function Home() {
   const [recipientEmails, setRecipientEmails] = useState<string[]>([])
@@ -39,7 +39,7 @@ export default function Home() {
   }
 
   const uploadHandler = event => {
-    papa.parse(event.target.files[0], {
+    parse(event.target.files[0], {
       header: true,
       skipEmptyLines: true,
       complete: function (results: any) {

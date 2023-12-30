@@ -19,14 +19,14 @@ export default function Home() {
     }
   }
 
-  const uploadHandler = (e: React.ChangeEvent<any>): void => {
+  const uploadHandler = (event: any) => {
     parse(event.target.files[0], {
       header: true,
       skipEmptyLines: true,
       complete: function (results) {
         const emailsFromCSV = results.data
-          .map((row) => row.email)
-          .filter((email) => email)
+          .map((row: any) => row.email)
+          .filter(email => email)
         setRecipientEmails(prevEmails => [...prevEmails, ...emailsFromCSV])
       },
     })
@@ -94,6 +94,7 @@ export default function Home() {
               <h1>Send Multiple Emails</h1>
               <h1>emails left to send : {recipientEmails.length}</h1>
             </div>
+
             <input
               type="file"
               name="file"
@@ -101,6 +102,7 @@ export default function Home() {
               onChange={uploadHandler}
               style={{ display: 'block', margin: '10px auto' }}
             />
+
             <div className="mt-4 flex items-center gap-4">
               <input
                 type="text"

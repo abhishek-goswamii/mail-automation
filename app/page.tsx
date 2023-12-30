@@ -12,24 +12,6 @@ export default function Home() {
   const [subject, setSubject] = useState('')
   const [sendingInProgress, setSendingInProgress] = useState<boolean>(false)
 
-  const [dirty, setDirty] = useState(false)
-
-  useEffect(() => {
-    const handleBeforeUnload = event => {
-      if (dirty) {
-        const message =
-          'Are you sure you want to leave? Your unsaved changes will be lost.'
-        event.returnValue = message
-        return message
-      }
-    }
-
-    window.addEventListener('beforeunload', handleBeforeUnload)
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload)
-    }
-  }, [dirty])
 
   const addRecipient = () => {
     if (newRecipient.trim() !== '') {

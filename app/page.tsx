@@ -20,7 +20,7 @@ export default function Home() {
     }
   }
 
-  const uploadHandler = event => {
+  const uploadHandler = (event: { target: { files: any[] } }) => {
     parse(event.target.files[0], {
       header: true,
       skipEmptyLines: true,

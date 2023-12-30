@@ -12,7 +12,6 @@ export default function Home() {
   const [subject, setSubject] = useState('')
   const [sendingInProgress, setSendingInProgress] = useState<boolean>(false)
 
-
   const addRecipient = () => {
     if (newRecipient.trim() !== '') {
       setRecipientEmails(prevEmails => [...prevEmails, newRecipient])
@@ -20,14 +19,14 @@ export default function Home() {
     }
   }
 
-  const uploadHandler = (event: { target: { files: any[] } }) => {
+  const uploadHandler = (event) => {
     parse(event.target.files[0], {
       header: true,
       skipEmptyLines: true,
-      complete: function (results: any) {
+      complete: function (results) {
         const emailsFromCSV = results.data
-          .map((row: any) => row.email)
-          .filter((email: any) => email)
+          .map((row) => row.email)
+          .filter((email) => email)
         setRecipientEmails(prevEmails => [...prevEmails, ...emailsFromCSV])
       },
     })
